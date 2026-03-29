@@ -10,13 +10,13 @@ async fn test_pg_driver() {
 
     let driver = PostgresDriver::new();
 
-    // Build config for local trust-auth connection
+    // Build config from environment variables (defaults to local trust-auth)
     let mut params = HashMap::new();
-    params.insert("host".to_string(), "localhost".to_string());
-    params.insert("port".to_string(), "5432".to_string());
-    params.insert("database".to_string(), "qery_test".to_string());
-    params.insert("username".to_string(), "tunaozmen".to_string());
-    params.insert("password".to_string(), "".to_string());
+    params.insert("host".to_string(), std::env::var("PG_HOST").unwrap_or("localhost".to_string()));
+    params.insert("port".to_string(), std::env::var("PG_PORT").unwrap_or("5432".to_string()));
+    params.insert("database".to_string(), std::env::var("PG_DATABASE").unwrap_or("qery_test".to_string()));
+    params.insert("username".to_string(), std::env::var("PG_USER").unwrap_or("postgres".to_string()));
+    params.insert("password".to_string(), std::env::var("PG_PASSWORD").unwrap_or_default());
     let config = ConnConfig::from_map(params);
 
     // === Metadata ===
