@@ -1,0 +1,53 @@
+[package]
+name = "qery"
+version = "0.1.0"
+description = "Qery — Open Source SQL Client"
+authors = ["Tuna Ozmen"]
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/QeryDB/Qery"
+homepage = "https://qery.app"
+
+[lib]
+name = "qery_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[features]
+default = ["desktop", "postgres", "sqlite-backend"]
+desktop = ["tiberius/winauth", "dep:hostname"]
+postgres = ["dep:tokio-postgres", "dep:postgres-types", "dep:bytes"]
+sqlite-backend = []
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+async-trait = "0.1"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "time", "net", "io-util"] }
+rusqlite = { version = "0.31", features = ["bundled"] }
+uuid = { version = "1", features = ["v4"] }
+base64 = "0.22"
+aes-gcm = "0.10"
+regex = "1"
+indexmap = "2"
+chrono = { version = "0.4", default-features = false, features = ["clock", "serde"] }
+tauri-plugin-dialog = "2.6.0"
+tauri-plugin-fs = "2.4.5"
+tiberius = { version = "0.12", default-features = false, features = ["tds73", "chrono"] }
+tokio-util = { version = "0.7", features = ["compat"] }
+futures-util = "0.3"
+hostname = { version = "0.4", optional = true }
+tokio-postgres = { version = "0.7", features = ["with-chrono-0_4", "with-serde_json-1", "with-uuid-1"], optional = true }
+postgres-types = { version = "0.2", features = ["with-chrono-0_4", "with-serde_json-1", "with-uuid-1"], optional = true }
+bytes = { version = "1", optional = true }
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = "symbols"  # strip debug symbols on all platforms including Windows/MSVC
+panic = "abort"

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Qery",
+  "version": "0.1.0",
+  "identifier": "app.qery.desktop",
+  "build": {
+    "removeUnusedCommands": true,
+    "beforeDevCommand": "cd client && bunx vite --port 4790",
+    "devUrl": "http://localhost:4790",
+    "beforeBuildCommand": "cd client && bun run build",
+    "frontendDist": "../client/dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Qery",
+        "width": 1400,
+        "height": 900,
+        "minWidth": 900,
+        "minHeight": 600,
+        "center": true,
+        "visible": true,
+        "decorations": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+  }
+}

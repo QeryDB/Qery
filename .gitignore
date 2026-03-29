@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+client/dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# SQLite databases
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+.claude/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Bun
+bun.lockb
+
+# Logs
+*.log
+*.tsbuildinfo
+
+# Build artifacts
+*.dmg
+*.msi
+*.exe
+*.deb
+*.AppImage
+bin/
+
+# Tauri
+src-tauri/target/
+src-tauri/gen/schemas

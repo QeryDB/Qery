@@ -1,0 +1,31 @@
+{
+  "name": "qery",
+  "version": "0.1.0",
+  "description": "Lightweight SQL client for MSSQL, PostgreSQL, and SQLite",
+  "license": "Apache-2.0",
+  "repository": "https://github.com/QeryDB/Qery",
+  "author": "Tuna Ozmen",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun run tauri dev",
+    "dev:client": "cd client && bunx vite --port 4790",
+    "build": "bun run tauri build",
+    "build:client": "cd client && bunx vite build",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "i18next": "^26.0.1",
+    "i18next-browser-languagedetector": "^8.2.1",
+    "react-i18next": "^17.0.1",
+    "sql-formatter": "^15.7.2",
+    "uuid": "^11.1.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.10.1",
+    "@types/bun": "^1.2.0",
+    "@types/node": "^22.13.0",
+    "typescript": "^5.7.0"
+  }
+}
